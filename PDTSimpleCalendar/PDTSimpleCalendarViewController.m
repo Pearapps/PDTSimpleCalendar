@@ -405,6 +405,10 @@ static const NSCalendarUnit kCalendarUnitYMD = NSCalendarUnitYear | NSCalendarUn
     cell.layer.shouldRasterize = YES;
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
 
+    if ([self.delegate respondsToSelector:@selector(willDisplayCell:date:)]) {
+        [self.delegate willDisplayCell:cell date:cellDate];
+    }
+    
     return cell;
 }
 

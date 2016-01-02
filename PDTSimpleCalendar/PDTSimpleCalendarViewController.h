@@ -11,6 +11,7 @@
 #import "PDTSimpleCalendarViewWeekdayHeader.h"
 
 @protocol PDTSimpleCalendarViewDelegate;
+@class PDTSimpleCalendarViewCell;
 
 /**
  *  `PDTSimpleCalendarViewController` is a `UICollectionViewController` subclass that displays a scrollable calendar view inspired by iOS7 Apple Cal App.
@@ -107,6 +108,8 @@
 @protocol PDTSimpleCalendarViewDelegate <NSObject>
 
 @optional
+
+- (void)willDisplayCell:(PDTSimpleCalendarViewCell *)cell date:(NSDate *)date;
 
 /**
  *  Asks the delegate if the Calendar may enable selection for the specified date
