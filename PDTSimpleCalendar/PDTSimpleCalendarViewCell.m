@@ -15,6 +15,8 @@ const CGFloat PDTSimpleCalendarCircleSize = 32.0f;
 @property (nonatomic, strong) UILabel *dayLabel;
 @property (nonatomic, strong) NSDate *date;
 
+@property (nonatomic, strong) UIView *dot;
+
 @end
 
 @implementation PDTSimpleCalendarViewCell
@@ -105,6 +107,28 @@ const CGFloat PDTSimpleCalendarCircleSize = 32.0f;
     }
     self.dayLabel.text = day;
     self.dayLabel.accessibilityLabel = accessibilityDay;
+}
+
+- (void)setShowDot:(BOOL)showDot {
+    if (!showDot) {
+        _dot.hidden = YES;
+    }
+    else {
+        if (!_dot) {
+            _dot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 6, 6)];
+            _dot.layer.cornerRadius = 3;
+            [self.contentView addSubview:_dot];
+            _dot.backgroundColor = [UIColor greenColor];
+        }
+        else {
+            _dot.hidden = NO;
+        }
+    }
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    _dot.center = CGPointMake(CGRectGetWidth(self.contentView.bounds)/2, CGRectGetHeight(self.contentView.bounds) - CGRectGetHeight(_dot.frame)/2 - 7);
 }
 
 - (void)setIsToday:(BOOL)isToday

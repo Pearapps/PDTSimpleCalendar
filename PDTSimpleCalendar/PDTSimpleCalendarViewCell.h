@@ -107,6 +107,8 @@
  */
 @property (nonatomic, strong) UIFont *textDefaultFont UI_APPEARANCE_SELECTOR;
 
+@property (nonatomic, assign) BOOL showDot;
+
 /**
  * Set the date for this cell
  *
